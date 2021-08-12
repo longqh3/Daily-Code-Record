@@ -1,0 +1,26 @@
+﻿(function ($) {
+    $.fn.mask = function (o) {
+        $(this).find('.mask-model').remove();
+        var _bg;
+        var _str;
+        if (o == 'loading_lg') {
+            _bg = '<div class="mask-model"></div>';
+            _str = '<div class="img-mask"></div>';
+        }
+        else {
+            _bg = '<div class="mask-model mask-layer"></div>';
+            _str = '<div class="progress-mask">' + o + '</div>';
+        }
+        $(this).append(_bg).append(_str);
+        
+        var _height = $(this).height();
+        $(this).find('.mask-model').css('height', _height);
+        var _progressWidth = $(this).find('.progress-mask').outerWidth();
+        $(this).find('.progress-mask').css('margin-left', '-' + _progressWidth / 2 + 'px');
+    }
+    $.fn.unmask = function () {
+        $(this).find('.mask-model').remove();
+        $(this).find('.img-mask').remove();
+        $(this).find('.progress-mask').remove();
+    }
+})(jQuery);

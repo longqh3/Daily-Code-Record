@@ -1,0 +1,151 @@
+﻿var rownum = 20;// 分页条数
+var _EntryCode = ''// '001';//默认显示的目录
+var _GetOrSearch = 'get'; // get:目录导航显示条目；search：检索条目
+
+//条目检索关键词
+var _Kw1 = "";
+var _Kw2 = "";
+var _Kcol1 = "";
+var _Kcol2 = "";
+var _Joiner = "";
+var _SearchType = "";
+
+$(function () {
+
+
+    $("#btnSearch").click(function () {
+        _Kw1 = $("#searchTxt1").val();
+        _Kw2 = $("#searchTxt2").val();
+        _Kcol1 = $("#searchCol1").val();
+        _Kcol2 = $("#searchCol2").val();
+        _Joiner = $("#searchJoiner").val();
+        _SearchType = "book";
+        _GetOrSearch = 'search';
+        SearchResult(_SearchType, _Code, _Kw1, _Kcol1, _Kw2, _Kcol2, _Joiner, 1, rownum);
+    });
+
+    $("#btnSearchKind").click(function () {
+        _Kw1 = $("#searchTxt1").val();
+        _Kw2 = $("#searchTxt2").val();
+        _Kcol1 = $("#searchCol1").val();
+        _Kcol2 = $("#searchCol2").val();
+        _Joiner = $("#searchJoiner").val();
+        _SearchType = "bookkind";
+        _GetOrSearch = 'search';
+        SearchResult(_SearchType, _Pykm, _Kw1, _Kcol1, _Kw2, _Kcol2, _Joiner, 1, rownum);
+
+    });
+    var fname = CSYD.getUrlParameter("fname");
+    if (fname != null && fname != "") {
+        $("#searchTxt1").val(decodeURIComponent(fname));
+        $("#btnSearch").click();
+
+    } else {
+        GetCatalogResult(_Code, _EntryCode);
+    }
+
+
+});
+$(document).ready(function () {
+
+    // --点击事件：年鉴简介
+    var dialog_jj;
+    $("#a_abstract").on("click", function () {
+        dialog_jj = new window.ShowDialog($(this));//创建ybdialog，//按钮调用
+        dialog_jj.show();//显示          
+    });
+});
+function GetCatalogResult(ybCode, EntryCode) {
+    /// todo 带入检索条件 赋值状态
+    _GetOrSearch = 'get';
+    _Code = ybCode;
+    _EntryCode = EntryCode;
+    BindResult(ybCode, EntryCode, 1, rownum);
+
+}
+function BindResult(ybCode, EntryCode, pageindex, pagerownum) {
+    var jsondata = { ybcode: ybCode, entrycode: EntryCode, page: pageindex, pagerow: pagerownum };
+    $.ajax({
+        type: "POST",
+        url: _rootUrl+'/Yearbook/PartialGetCatalogResult',
+        data: jsondata,
+        datatype: "html",
+        success: function (data) {
+
+            $("#ResultList_jy").remove();
+            $("#ResultList_kz").remove();
+            $("#ResultPage").remove();
+            $('#div_single_r').append(data);
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            //console.log(errorThrown);
+            //alert("处理失败!");
+        }
+    });
+}
+function SearchResult(searchType, code, keyword1, keycol1, keyword2, keycol2, joiner, pageindex, pagerownum) {
+    var jsondata = { stype: searchType, scode: code, kw1: keyword1, kcol1: keycol1, kw2: keyword2, kcol2: keycol2, join: joiner, page: pageindex, pagerow: pagerownum };
+    $.ajax({
+        type: "POST",
+        url:_rootUrl+ '/Yearbook/PartialSearchCatalogResult',
+        data: jsondata,
+        datatype: "html",
+        success: function (data) {
+
+            $("#ResultList_jy").remove();
+            $("#ResultList_kz").remove();
+            $("#ResultPage").remove();
+            $('#div_single_r').append(data);
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log(errorThrown);
+            //alert("处理失败!");
+        }
+    });
+}
+function Pagination(totalPageCnt, currnetPage, accessPage, type) {
+
+    if (type == 'first') {
+        accessPage = 1;
+    } else if (type == 'pre') {
+        if (parseInt(currnetPage) > 1) {
+            accessPage = parseInt(currnetPage) - 1;
+        } else {
+            accessPage = 1;
+        }
+
+    } else if (type == 'last') {
+        accessPage = totalPageCnt;
+
+    } else if (type == 'next') {
+        if (parseInt(currnetPage) >= parseInt(totalPageCnt)) {
+            accessPage = totalPageCnt;
+        } else {
+            accessPage = parseInt(currnetPage) + 1;
+        }
+    }
+    if (_GetOrSearch == "get") {
+        BindResult(_Code, _EntryCode, accessPage, rownum);
+    } else {
+        if (_SearchType == "book") {
+            SearchResult(_SearchType, _Code, _Kw1, _Kcol1, _Kw2, _Kcol2, _Joiner, accessPage, rownum);
+        } else {//_SearchType == "bookKind"
+            SearchResult(_SearchType, _Pykm, _Kw1, _Kcol1, _Kw2, _Kcol2, _Joiner, accessPage, rownum);
+        }
+    }
+}
+//下载定向url
+function directDown(obj) {
+    var filecode = $(obj).attr("fn");
+    var pagerange = $(obj).attr("pg");
+    var disk = $(obj).attr("disk");
+    var link = CSYD.getCajUrl(filecode, pagerange, disk);
+    //console.log(link);
+    $(obj).attr("href", link);
+}
+
+function ChangeCatalogCSS(obj) {
+    $(".s_list ul li a").removeClass("cur");
+    $(obj).addClass("cur");
+}
+

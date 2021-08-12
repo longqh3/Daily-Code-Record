@@ -1,0 +1,183 @@
+﻿$(function () {
+    login.init();
+});
+var login = {
+
+    init: function () {
+        this.dropdown.init();
+        this.JGSubmit.addEventListener();
+        this.GRSubmit.addEventListener();
+        this.Logout.addEventListener();
+    },
+    dropdown: {
+        init: function () {
+            this.dropdownToggle.init();
+        },
+        dropdownToggle: {
+            init: function () {
+                this.addEventListener();
+            },
+            addEventListener: function () {
+                $('#LoginBox').on('click', '.dropdown-toggle', function (e) {
+                    e.stopPropagation();
+                    var ele = $(this).siblings('.dropdown-menu');
+                    $(this).parent().siblings('.dropdown').find('.dropdown-menu').removeClass('open');
+                    if (ele.hasClass('open')) {
+                        ele.removeClass('open');
+                    }
+                    else {
+                        ele.addClass('open');
+                    }
+                });
+
+                $('.c_header .dropdown-menu').click(function (e) {
+                    e.stopPropagation();
+                });
+            }
+        }
+    },
+    JGSubmit: {//机构登录
+        addEventListener: function () {
+            $('#JGSubmit').click(function () {
+                var $this = $(this);
+                var name = $('#JGName').val();
+                var password = $('#JGPassword').val();
+                var usertype = 'jg';
+                var ltype = 'namepasslogin';
+
+                $.ajax({
+                    url: _rootUrl + '/auth/SecondLogOn',
+                    data: {
+                        usertype: usertype,
+                        user: name,
+                        pw: password,
+                        ltype: ltype
+                    },
+                    type: 'post',
+                    async: false,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.Success) {
+                            login.refreshUserStatus();
+                        }
+                        else {
+                            $this.parents('.dropdown.login').find('.error').text(data.ErrorMsg);
+                        }
+                    },
+                    error: function (xhr, errorInfo, ex) {
+                        alert('数据错误！');
+                    }
+                });
+            });
+
+            $('.btn-ipsubmit').click(function () {
+                var $this = $(this);
+                var ltype = 'iplogin';
+                var usertype = $(this).attr('data-usertype');
+
+                $.ajax({
+                    url: _rootUrl + '/auth/SecondLogOn',
+                    data: {
+                        ltype: ltype,
+                        usertype: usertype
+                    },
+                    type: 'post',
+                    async: false,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.Success) {
+                            login.refreshUserStatus();
+                        }
+                        else {
+                            $this.parents('.dropdown.login').find('.error').text(data.ErrorMsg);
+                        }
+                    },
+                    error: function (xhr, errorInfo, ex) {
+                        alert('数据错误！');
+                    }
+                });
+            });
+        }
+    },
+    GRSubmit: {//个人登录
+        addEventListener: function () {
+            $('#GRSubmit').click(function () {
+                var $this = $(this);
+                var name = $('#GRName').val();
+                var password = $('#GRPassword').val();
+                var usertype = 'gr';
+                var ltype = 'namepasslogin';
+
+                $.ajax({
+                    url: _rootUrl + '/auth/SecondLogOn',
+                    data: {
+                        usertype: usertype,
+                        user: name,
+                        pw: password,
+                        ltype: ltype
+                    },
+                    type: 'post',
+                    async: false,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.Success) {
+                            login.refreshUserStatus();
+                        }
+                        else {
+                            $this.parents('.dropdown.login').find('.error').text(data.ErrorMsg);
+                        }
+                    },
+                    error: function (xhr, errorInfo, ex) {
+                        alert('数据错误！');
+                    }
+                });
+            });
+        }
+    },
+    Logout: {//登出
+        addEventListener: function () {
+            $('.btn-logout').click(function () {
+                var type = $(this).attr('data-value');
+                $.ajax({
+                    url: _rootUrl + '/auth/LogOut',
+                    data: {
+                        type: type
+                    },
+                    type: 'post',
+                    async: false,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.Success) {
+                            login.refreshUserStatus();
+                        }
+                    },
+                    error: function (xhr, errorInfo, ex) {
+                        alert('数据错误！');
+                    }
+                });
+               // CSYD.kdocLogout();//在下载服务kdoc登出；--更新cnki_mnrg.dll -20200317后，无需在kdoc端登出；
+            });
+        }
+    },
+    Close: {
+        bindClick: function (ele) {
+            $(ele).parents('.dropdown-menu.open').removeClass('open');
+        }
+    },
+    //页头登录部分刷新
+    refreshUserStatus: function () {
+        $.ajax({
+            url: _rootUrl + '/auth/PartialUserStatus',
+            type: 'post',
+            async: false,
+            dataType: 'html',
+            success: function (data) {
+                $('#LoginContaine').html(data);
+            },
+            error: function (xhr, errorInfo, ex) {
+                alert('登录状态刷新处理失败！');
+            }
+        });
+
+    }
+}

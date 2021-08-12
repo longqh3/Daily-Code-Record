@@ -1,0 +1,164 @@
+﻿var NavConfig = [
+    {
+        'code':'newhome',
+        'name': '首页',
+        'url':'/NewHome/Index',
+        'sub': null
+    },
+    {
+        'code': 'yearbook',
+        'name': '统计资料',
+        'url':'/yearbook/Navi',
+        'sub': [
+            {
+                'name': '统计年鉴',
+                'code': 'code=a',
+                'url':'/Yearbook/Navi?type=type&code=A',
+                'sub': null
+            },
+            {
+                'name': '分析报告',
+                'code': 'code=b',
+                'url':'/Yearbook/Navi?type=type&code=B',
+                'sub': null
+            },
+            {
+                'name': '资料汇编',
+                'code': 'code=c',
+                'url':'/Yearbook/Navi?type=type&code=C',
+                'sub': null
+            },
+            {
+                'name': '调查资料',
+                'code': 'code=d',
+                'url':'/Yearbook/Navi?type=type&code=D',
+                'sub': null
+            },
+            {
+                'name': '普查资料',
+                'code': 'code=e',
+                'url': '/Yearbook/Navi?type=type&code=E',
+                'sub': null
+            }
+        ]
+    },
+    {
+        'code': '/analysis',
+        'name': '数据分析',
+        'url': null,
+        'sub': [
+            {
+                'code': 'yeardata',
+                'name': '年度数据分析',
+                'url': '/YearData/Analysis',
+                'sub': null
+            },
+            {
+                'code': 'seasonormonth',
+                'name': '进度数据分析',
+                'url':'/SeasonOrMonth/Analysis',
+                'sub': null
+            },
+            {
+                'code': 'sectordata',
+                'name': '行业数据分析',
+                'url':'/SectorData/Analysis',
+                'sub': null
+            },
+            {
+                'code': 'internationaldata',
+                'name': '国际数据分析',
+                'url':'/InternationalData/Analysis',
+                'sub': null
+            }
+        ]
+    },
+    {
+        'code': 'decision',
+        'name': '决策支持',
+        'url': null,
+        'sub': [
+            {
+                'code': 'regressionanalysis',
+                'name': '相关分析',
+                'url': '/Decision/Methods/RegressionAnalysis?type=year',
+                'sub': null
+            },
+            {
+                'code': 'ahp',
+                'name': '科学评价',
+                'url': '/Decision/Methods/AHP?type=year',
+                'sub': null
+            },
+            {
+                'code': 'timeseriestrendpredict',
+                'name': '统计预测',
+                'url': '/Decision/Methods/TimeSeriesTrendPredict?type=year',
+                'sub': null
+            },
+            {
+                'code': 'industrysdecision',
+                'name': '决策模型',
+                'url': '/Decision/Methods/IndustrysDecision?type=year&id=',
+                'sub': null
+            }
+        ]
+    },
+    {
+        'code': 'mydata',
+        'name': '我的统计数据',
+        'url': '/MyData/MyDataFavoriate/?id=f1',
+        'sub': null
+    }
+]
+
+$(function () {
+    Layout.init();
+});
+
+var Layout = {
+    cache: {
+        url: window.location.href.toLowerCase()
+    },
+    init: function () {
+        this.Nav.init();
+        this.Crumb.init();
+    },
+    Nav: {
+        init: function () {
+            var url = Layout.cache.url;
+            for (var i = 0; i < NavConfig.length; i++) {
+                if (url.indexOf(NavConfig[i].code) > -1) {
+                    $('.c_search_nav').find('li.c_nav_tit a.c_nav_page').removeClass('c_nav_act');
+                    $('.c_search_nav').find('li.c_nav_tit:eq(' + i + ') a.c_nav_page').addClass('c_nav_act');
+                    break;
+                }
+            }
+        }
+    },
+    Crumb: {
+        init: function () {
+            var url = Layout.cache.url;
+            var $crumb = $('#Crumb');
+            var str = '';
+            for (var i = 0; i < NavConfig.length; i++) {
+                if (NavConfig[i].sub) {
+                    if (url.indexOf(NavConfig[i].code) > -1) {
+                        str += '<li>';
+                        str += '<a href="' + (NavConfig[i].url == null ? 'javascript:void(0);' : NavConfig[i].url) + '">' + NavConfig[i].name + '</a>';
+                        for (var j = 0; j < NavConfig[i].sub.length; j++) {
+                            if (url.indexOf(NavConfig[i].sub[j].code) > -1) {
+                                str += '><a href="' + (NavConfig[i].sub[j].url == null ? 'javascript:void(0);' : NavConfig[i].sub[j].url) + '">' + NavConfig[i].sub[j].name + '</a>';
+                                $crumb.show();
+                                break;
+                            }
+                        }
+                        str += '</li>';
+                        break;
+                    }
+                }
+            }
+            $crumb.html(str);
+        }
+    }
+}

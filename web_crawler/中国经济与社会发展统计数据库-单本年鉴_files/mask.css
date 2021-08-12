@@ -1,0 +1,46 @@
+﻿.mask-model {
+    display: block;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.mask-layer {
+    background-color: black;
+    opacity: .6;
+    filter: alpha(opacity=60);
+}
+
+.progress-mask {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: auto;
+    padding: 4px;
+    z-index: 10000;
+    overflow: auto;
+    color: #333;
+    background-color: white;
+    border: 2px solid #3f68ff;
+}
+
+.img-mask {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    z-index: 10000;
+    background-image:url(../design/images/loading_lg.gif);
+    background-repeat:no-repeat;
+    background-size:100%;
+    background-position: 0 0;
+}
+
+.img-mask img{
+    width: 100%;
+    height:100%;
+}
