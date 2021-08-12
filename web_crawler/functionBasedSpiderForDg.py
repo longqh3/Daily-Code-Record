@@ -144,5 +144,5 @@ def iter_downloader_for_dg(year_file_name_download_link_dict, result_folder_loc,
 # 入口函数
 if __name__ == '__main__':
     year_file_name_download_link_dict = entry_function_for_dg("https://data.cnki.net/Yearbook/Single/N2021020056")
-    # 自行指定结果存储文件夹目录、从浏览器中获取的cookie信息文件
+    # 自行指定结果存储文件夹目录、从浏览器中获取的cookie信息文件（附：其实已经不再需要，但出于参考目的，还是先予以保存）
     iter_downloader_for_dg(year_file_name_download_link_dict, "C:\\Users\\-PC\Desktop\\test", "C:\\Users\-PC\\Desktop\\test\\cookie.txt")
