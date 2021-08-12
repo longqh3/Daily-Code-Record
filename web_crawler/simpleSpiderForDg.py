@@ -101,3 +101,14 @@ f=requests.get(Download_addres, cookies=cookies)
 #下载文件
 with open(os.path.join("C:\\Users\-PC\Desktop\\test", "1-1 分地区年末人口数.xls"),"wb") as code:
      code.write(f.content)
+
+# 动态更新cookie
+import requests
+s = requests.session()
+r=s.get("https://data.cnki.net/")
+print(s.cookies.get_dict())#输出cookies
+f=requests.get(Download_addres, cookies=s.cookies.get_dict())
+#下载文件
+import os
+with open(os.path.join("C:\\Users\-PC\Desktop\\test", "test.xls"),"wb") as code:
+     code.write(f.content)

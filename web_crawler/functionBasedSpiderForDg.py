@@ -4,6 +4,9 @@
 # 1. 采取lazy-load形式，因而此处选择取巧，直接获取POST请求内的真实信息
 # 2. 需要IP认证下载，经过验证后发现，使用IDM、浏览器可以下载，迅雷则无法下载，
 # 因此猜测是cookie在发挥作用，request模块中加入cookie后即可正常下载
+# 3. 使用同一个cookie时，仅下载2年的信息后，就提示需要登录，
+# 考虑原因在于cookie过期/受限，因此同样采取取巧的方式，
+# 新一年的数据下载则使用新的cookie（应用request库新session来请求新的cookie）
 ###
 
 import re
@@ -117,17 +120,24 @@ def iter_downloader_for_dg(year_file_name_download_link_dict, result_folder_loc,
         print(f"开始处理{single_year}相应信息.......")
         # 新建文件夹保存相应信息
         single_year_folder_loc = os.path.join(result_folder_loc, single_year)
-        os.mkdir(single_year_folder_loc)
-        # 遍历所有下载链接进行下载
-        for file_name in year_file_name_download_link_dict[single_year].keys():
-            print(f"开始下载{file_name}对应文件")
-            download_address = year_file_name_download_link_dict[single_year][file_name] # 获取下载地址
-            f = requests.get(download_address, cookies=cookies) # 把下载地址发送给requests模块
-            # 开始下载文件并保存至本地
-            with open(os.path.join(single_year_folder_loc, file_name+".xls"), "wb") as file:
-                file.write(f.content)
-            # 间隔1秒再进行下载，避免反爬机制介入
-            # time.sleep(1)
+        # 避免已建立文件夹且下载完的情况
+        try:
+            os.mkdir(single_year_folder_loc)
+            # 新建request对应进程，并以进程内的cookie来作为
+            s = requests.session()
+            r = s.get("https://data.cnki.net/")
+            # 遍历所有下载链接进行下载
+            for file_name in year_file_name_download_link_dict[single_year].keys():
+                print(f"开始下载{file_name}对应文件")
+                download_address = year_file_name_download_link_dict[single_year][file_name] # 获取下载地址
+                f = requests.get(download_address, cookies=s.cookies.get_dict()) # 把下载地址发送给requests模块
+                # 开始下载文件并保存至本地
+                with open(os.path.join(single_year_folder_loc, file_name+".xls"), "wb") as file:
+                    file.write(f.content)
+                # 间隔1秒再进行下载，避免反爬机制介入
+                # time.sleep(1)
+        except:
+            continue
         print(f"{single_year}所有信息下载完成")
         print("="*100)
 
