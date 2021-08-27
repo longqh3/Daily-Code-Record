@@ -40,7 +40,7 @@ def html_doi_extract(htmlPath):
 
 # 调用第三方scihub下载工具进行pdf下载
 # 应用SciDownl工具：https://github.com/Tishacy/SciDownl
-def doi_pdf_download(doi_list, out)
+def doi_pdf_download(doi_list, out):
     # 更新scihub的下载列表
     from scidownl.update_link import *
 
