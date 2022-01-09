@@ -16,12 +16,12 @@ from gooey import Gooey, GooeyParser
 
 @Gooey(encoding='utf-8', program_name="聊天室记录提取v1.0", language='chinese')
 def start():
-    parser=GooeyParser(description="根据指定信息完成流沙河聊天室中历史留言数据提取和导出")
+    parser=GooeyParser(description="根据指定信息完成聊天室中历史留言数据提取和导出")
     # parser.add_argument('--raw_RNA_mutations', '-r' ,choices=[5,10,20],default=5,type=int,help='Number of epochs.')
     # Generic parameter
     parser.add_argument('--single_time', type=int, help='所需提取时间，格式如20220104', gooey_options={'visible': False})
     parser.add_argument('--batch_time', metavar="输入所需提取时间范围", default="20220102_20220107", help='格式如20220102_20220107')
-    parser.add_argument('--chat_room_id', metavar="输入聊天室ID", type=int, default=135582562975745, help='格式如135582562975745（对应流沙河ID）')
+    parser.add_argument('--chat_room_id', metavar="输入聊天室ID", type=int, default=135582562975745, help='格式如135582562975745（对应聊天室ID）')
     parser.add_argument('--data_type', metavar="输入所需提取数据类型", default="message", help='格式如live或message，live为直播文字记录、message为留言文字记录')
     parser.add_argument('--output_folder', widget="DirChooser", metavar="数据导出文件夹", help='默认为当前目录', default=os.path.split(os.path.realpath(__file__))[0])
 
