@@ -1,0 +1,98 @@
+Abdominal adipose tissue@@Adipose-derived stem cell	ITGB1
+Abdominal adipose tissue@@Adipose-derived stem cell	NT5E,ITGA4
+Abdominal adipose tissue@@Adipose-derived stem cell	PTPRC
+Abdominal adipose tissue@@Adipose-derived stem cell	PTPRC,CD44,PECAM1,ITGA4
+Abdominal adipose tissue@@Adipose-derived stem cell	CD14,ENG,CD44
+Abdominal adipose tissue@@Adipose-derived stem cell	PTPRC,ITGB1,ITGA4,CD44
+Abdominal adipose tissue@@Adipose-derived stem cell	PECAM1
+Abdominal adipose tissue@@Adipose-derived stem cell	PECAM1
+Abdominal adipose tissue@@Adipose-derived stem cell	ENG,THY1,CD34,PECAM1,ITGB1,CD14,NT5E
+Abdominal adipose tissue@@Adipose-derived stem cell	ITGB1
+Abdominal adipose tissue@@Adipose-derived stem cell	PECAM1
+Abdominal adipose tissue@@Adipose-derived stem cell	CD44
+Adipose tissue@@Adipose multilineage-differentiating stress-enduring cell	ENG
+Adipose tissue@@Adipose multilineage-differentiating stress-enduring cell	ENG,THY1
+Adipose tissue@@Adipose progenitor cell	ITGB1
+Adipose tissue@@Adipose progenitor cell	ITGB1
+Adipose tissue@@Adipose progenitor cell	ITGB1
+Adipose tissue@@Adipose progenitor cell	ITGB1
+Adipose tissue@@Adipose-derived stem cell	CD55,ITGB1,MYC
+Adipose tissue@@Adipose-derived stem cell	CD55,NT5E,ITGA4
+Adipose tissue@@Adipose-derived stem cell	PTPRC,ITGAL
+Adipose tissue@@Adipose-derived stem cell	ITGAL
+Adipose tissue@@Adipose-derived stem cell	PTPRC,ITGA1,ITGAL,CD44,PECAM1,ITGA4
+Adipose tissue@@Adipose-derived stem cell	ICAM1,KLF4,ITGAX,ENG,TFRC,CD44
+Adipose tissue@@Adipose-derived stem cell	PTPRC,CD55,ITGB1,ITGA4,ITGAL,CD44
+Adipose tissue@@Adipose-derived stem cell	CD55,MYC
+Adipose tissue@@Adipose-derived stem cell	PECAM1
+Adipose tissue@@Adipose-derived stem cell	PECAM1
+Adipose tissue@@Adipose-derived stem cell	ENG,THY1,CD9,CD59,CD34,MCAM,PDGFRB,VCAM1,CDH5,NES,ITGA1,PECAM1,ITGB1,KLF4,ICAM1,NT5E
+Adipose tissue@@Adipose-derived stem cell	CD9,SOX2,CD59,KLF4,NGFR,MYC,ITGB1,CD55
+Adipose tissue@@Adipose-derived stem cell	KLF4,ICAM1,PECAM1,TFRC
+Adipose tissue@@Adipose-derived stem cell	KIT,CD9,CD44,ITGAX,KLF4
+Adipose tissue@@Adipose-derived stem cell	CD59,CD9,SOX2,KLF4
+Adipose tissue@@Adipose-derived stem cell	ITGAL
+Adipose tissue@@Adipose-derived stromal cell	ITGB1,MYC
+Adipose tissue@@Adipose-derived stromal cell	NT5E
+Adipose tissue@@Adipose-derived stromal cell	PTPRC
+Adipose tissue@@Adipose-derived stromal cell	PTPRC,CD44,PECAM1
+Adipose tissue@@Adipose-derived stromal cell	KLF4,ANPEP,ENG,TFRC,CD44
+Adipose tissue@@Adipose-derived stromal cell	PTPRC,ITGB1,CD44
+Adipose tissue@@Adipose-derived stromal cell	MYC
+Adipose tissue@@Adipose-derived stromal cell	PECAM1
+Adipose tissue@@Adipose-derived stromal cell	PECAM1
+Adipose tissue@@Adipose-derived stromal cell	ENG,THY1,CD34,VCAM1,CDH5,PECAM1,ITGB1,KLF4,NT5E
+Adipose tissue@@Adipose-derived stromal cell	SOX2,ALCAM,KLF4,MYC,ITGB1
+Adipose tissue@@Adipose-derived stromal cell	KLF4,PECAM1,TFRC
+Adipose tissue@@Adipose-derived stromal cell	CD44,KLF4
+Adipose tissue@@Adipose-derived stromal cell	ALCAM,SOX2,KLF4
+Adipose tissue@@Dedifferentiation adipocyte	ITGB1
+Adipose tissue@@Dedifferentiation adipocyte	PTPRC
+Adipose tissue@@Dedifferentiation adipocyte	PTPRC,CD44
+Adipose tissue@@Dedifferentiation adipocyte	CD44
+Adipose tissue@@Dedifferentiation adipocyte	PTPRC,ITGB1,CD44
+Adipose tissue@@Dedifferentiation adipocyte	CD34,VCAM1,ITGB1
+Adipose tissue@@Dedifferentiation adipocyte	ITGB1
+Adipose tissue@@Dedifferentiation adipocyte	CD44
+Adipose tissue@@Endoderm progenitor cell	PECAM1
+Adipose tissue@@Endoderm progenitor cell	PECAM1
+Adipose tissue@@Endoderm progenitor cell	PECAM1
+Adipose tissue@@Endoderm progenitor cell	CD34,PECAM1
+Adipose tissue@@Endoderm progenitor cell	PECAM1
+Adipose tissue@@Endoderm progenitor cell	PROM1
+Adipose tissue@@Endoderm progenitor cell	PROM1
+Adipose tissue@@Endothelial cell	PTPRC
+Adipose tissue@@Endothelial cell	PTPRC,PECAM1
+Adipose tissue@@Endothelial cell	ENG
+Adipose tissue@@Endothelial cell	PTPRC
+Adipose tissue@@Endothelial cell	PECAM1
+Adipose tissue@@Endothelial cell	PECAM1
+Adipose tissue@@Endothelial cell	VWF,ENG,CD34,MCAM,ABCG2,PECAM1
+Adipose tissue@@Endothelial cell	NGFR
+Adipose tissue@@Endothelial cell	PECAM1
+Adipose tissue@@Endothelial cell	PROM1
+Adipose tissue@@Endothelial cell	PROM1
+Adipose tissue@@Endothelial progenitor cell	CD34
+Adipose tissue@@Fat cell (adipocyte)	PLIN2
+Adipose tissue@@Fat cell (adipocyte)	PLIN2
+Adipose tissue@@Fat cell (adipocyte)	PLIN2
+Adipose tissue@@Fat cell (adipocyte)	BSCL2
+Adipose tissue@@Fat cell (adipocyte)	BSCL2
+Adipose tissue@@Fat cell (adipocyte)	DLK2,ADIPOR1
+Adipose tissue@@Fat cell (adipocyte)	PLIN2
+Adipose tissue@@Fat cell (adipocyte)	SLC27A2,SLC27A1,BSCL2,ADIPOR1
+Adipose tissue@@Fat cell (adipocyte)	SLC27A2,TNFRSF9
+Adipose tissue@@Macrophage	FCGR2B
+Adipose tissue@@Macrophage	FCGR2B
+Adipose tissue@@Macrophage	PTPRC
+Adipose tissue@@Macrophage	PTPRC
+Adipose tissue@@Macrophage	CD14,CD68,FCGR2A,FCGR3A,MRC1,FCGR2B
+Adipose tissue@@Macrophage	PTPRC
+Adipose tissue@@Macrophage	FCGR2B
+Adipose tissue@@Macrophage	CD14
+Adipose tissue@@Macrophage	CD68
+Adipose tissue@@Mesenchymal progenitor cell	MCAM
+Adipose tissue@@Mesenchymal stem cell	CD19,CD70,ITGB1
+Adipose tissue@@Mesenchymal stem cell	CD19,NT5E,ITGA4
+Adipose tissue@@Mesenchymal stem cell	PTPRC
+Adipose tissue@@Mesenchymal stem cell	PTPRC,CD44,TNFRSF1A,PECAM1,ITGA4,CASP3
